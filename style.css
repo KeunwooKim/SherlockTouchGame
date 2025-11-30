@@ -1,0 +1,164 @@
+/* General App Styles */
+.stApp {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+section[data-testid="stSidebar"], section[data-testid="stHeader"] {
+    background-color: rgba(0,0,0,0) !important;
+}
+
+/* Narration Box Styles */
+.narration-box {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 800px;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    font-size: 1.1em;
+    z-index: 10;
+}
+
+.narration-box-meta {
+    background-color: rgba(20, 50, 90, 0.85);
+    border: none;
+    font-style: italic;
+}
+
+.narration-box-ingame {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid #FFF;
+    font-style: normal;
+}
+
+/* Dialogue Box Styles */
+.dialogue-box {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+}
+
+.dialogue-character-image {
+    position: absolute;
+    width: 360px;
+    height: auto;
+}
+
+.char-name {
+    position: absolute;
+    top: -40px;
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.dialogue-text {
+    color: white;
+    font-size: 1.3em;
+    font-weight: 500;
+    line-height: 1.6;
+    width: 100%;
+}
+
+/* Alignment Styles for Dialogue */
+.align-left .dialogue-character-image { left: 40px; right: auto; bottom: 200px; }
+.align-left .dialogue-text { margin-right: auto; margin-left: 420px; text-align: left; }
+.align-left .char-name { right: auto; left: 420px; }
+
+.align-right .dialogue-character-image { left: auto; right: 40px; bottom: 200px; }
+.align-right .dialogue-text { margin-left: auto; margin-right: 420px; text-align: right; }
+.align-right .char-name { left: auto; right: 420px; }
+
+/* Investigation Scene Styles */
+.center-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80vh; /* Make space for dialogue box */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.center-container img {
+    max-height: 90%;
+    max-width: 50%;
+    width: auto;
+    object-fit: contain;
+}
+
+.investigation-item img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+div[data-testid="stHorizontalBlock"] {
+    align-items: flex-end;
+}
+
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .narration-box {
+        font-size: 1em;
+        padding: 15px;
+        bottom: 20px;
+    }
+
+    .dialogue-box {
+        height: 150px;
+        align-items: flex-start;
+        padding-top: 10px;
+    }
+
+    .dialogue-character-image { width: 150px; }
+    .dialogue-text { font-size: 0.9em; line-height: 1.5; }
+    .char-name { top: -25px; font-size: 1.1em; }
+
+    /* Mobile Alignment */
+    .align-left .dialogue-character-image { left: 5px; bottom: 150px; }
+    .align-left .dialogue-text { margin-left: 165px; text-align: left; }
+    .align-left .char-name { left: 165px; }
+
+    .align-right .dialogue-character-image { right: 5px; bottom: 150px; }
+    .align-right .dialogue-text { margin-right: 165px; text-align: right; }
+    .align-right .char-name { right: 165px; }
+}
+
+/* Center Message Styles */
+.center-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px 40px;
+    border-radius: 15px;
+    font-size: 1.5em;
+    font-weight: bold;
+    z-index: 9999;
+    text-align: center;
+}
+
+/* Hide sidebar for cleaner UI */
+[data-testid="stSidebar"] {
+    width: 0px !important;
+}
+
