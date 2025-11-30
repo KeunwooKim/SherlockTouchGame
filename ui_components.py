@@ -25,7 +25,7 @@ def set_background(image_path, color=""):
             st.markdown(
                 f'''
                 <style>
-                .stApp {{
+                body, .stApp {{
                     background-image: url("data:image/jpeg;base64,{image_base64}");
                 }}
                 </style>
@@ -36,7 +36,7 @@ def set_background(image_path, color=""):
         st.markdown(
             f'''
             <style>
-            .stApp {{
+            body, .stApp {{
                 background-color: {color};
             }}
             </style>

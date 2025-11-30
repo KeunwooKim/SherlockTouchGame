@@ -158,7 +158,9 @@ div[data-testid="stHorizontalBlock"] {
 }
 
 /* Hide sidebar for cleaner UI */
+/*
 [data-testid="stSidebar"] {
     width: 0px !important;
 }
+*/
 

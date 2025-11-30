@@ -16,8 +16,8 @@ def main():
     
     # 0. CSS 로드 및 오디오 플레이어 준비
     load_css('style.css')
-    # st.markdown('<audio id="sfx_player"></audio>', unsafe_allow_html=True)
-    # st.markdown('<audio id="bgm_player" loop autoplay></audio>', unsafe_allow_html=True)
+    st.markdown('<audio id="sfx_player"></audio>', unsafe_allow_html=True)
+    st.markdown('<audio id="bgm_player" loop autoplay></audio>', unsafe_allow_html=True)
     
     # 1. 세션 상태 초기화
     if 'scene' not in st.session_state:
@@ -30,53 +30,53 @@ def main():
         st.session_state.fear_level = 1
     if 'display_answer' not in st.session_state:
         st.session_state.display_answer = None
-    # if 'current_bgm' not in st.session_state:
-    #     st.session_state.current_bgm = None
+    if 'current_bgm' not in st.session_state:
+        st.session_state.current_bgm = None
 
-    # # 2. BGM 로직
-    # current_scene = st.session_state.scene
-    # bgm_to_play = None
+    # 2. BGM 로직
+    current_scene = st.session_state.scene
+    bgm_to_play = None
 
-    # if current_scene == 'boot':
-    #     bgm_to_play = None
-    # elif current_scene == 'the_end':
-    #     bgm_to_play = None
-    # elif current_scene.startswith('intro') or current_scene.startswith('scene_1') or current_scene.startswith('scene_3') or current_scene.startswith('scene_4'):
-    #     bgm_to_play = SOUNDS["main_theme"]
-    # elif current_scene.startswith('scene_2') or current_scene.startswith('scene_5'):
-    #     bgm_to_play = SOUNDS["investigation_theme"]
-    # elif current_scene.startswith('scene_6'):
-    #     bgm_to_play = SOUNDS["confrontation_theme"]
-    # elif current_scene.startswith('scene_7'):
-    #     bgm_to_play = SOUNDS["emotional_theme"]
+    if current_scene == 'boot':
+        bgm_to_play = None
+    elif current_scene == 'the_end':
+        bgm_to_play = None
+    elif current_scene.startswith('intro') or current_scene.startswith('scene_1') or current_scene.startswith('scene_3') or current_scene.startswith('scene_4'):
+        bgm_to_play = SOUNDS["main_theme"]
+    elif current_scene.startswith('scene_2') or current_scene.startswith('scene_5'):
+        bgm_to_play = SOUNDS["investigation_theme"]
+    elif current_scene.startswith('scene_6'):
+        bgm_to_play = SOUNDS["confrontation_theme"]
+    elif current_scene.startswith('scene_7'):
+        bgm_to_play = SOUNDS["emotional_theme"]
 
-    # if st.session_state.current_bgm != bgm_to_play:
-    #     if bgm_to_play:
-    #         sound_base64 = get_base64_of_bin_file(bgm_to_play)
-    #         if sound_base64:
-    #             js_code = f"""
-    #                 <script>
-    #                     var bgmPlayer = document.getElementById("bgm_player");
-    #                     if (bgmPlayer) {{
-    #                         bgmPlayer.src = "data:audio/mp3;base64,{sound_base64}";
-    #                         bgmPlayer.play();
-    #                     }}
-    #                 </script>
-    #             """
-    #             st.markdown(js_code, unsafe_allow_html=True)
-    #     else: # bgm_to_play is None
-    #         js_code = """
-    #             <script>
-    #                 var bgmPlayer = document.getElementById("bgm_player");
-    #                 if (bgmPlayer) {
-    #                     bgmPlayer.pause();
-    #                     bgmPlayer.src = "";
-    #                 }
-    #             </script>
-    #         """
-    #         st.markdown(js_code, unsafe_allow_html=True)
+    if st.session_state.current_bgm != bgm_to_play:
+        if bgm_to_play:
+            sound_base64 = get_base64_of_bin_file(bgm_to_play)
+            if sound_base64:
+                js_code = f"""
+                    <script>
+                        var bgmPlayer = document.getElementById("bgm_player");
+                        if (bgmPlayer) {{
+                            bgmPlayer.src = "data:audio/mp3;base64,{sound_base64}";
+                            bgmPlayer.play();
+                        }}
+                    </script>
+                """
+                st.markdown(js_code, unsafe_allow_html=True)
+        else: # bgm_to_play is None
+            js_code = """
+                <script>
+                    var bgmPlayer = document.getElementById("bgm_player");
+                    if (bgmPlayer) {
+                        bgmPlayer.pause();
+                        bgmPlayer.src = "";
+                    }
+                </script>
+            """
+            st.markdown(js_code, unsafe_allow_html=True)
         
-    #     st.session_state.current_bgm = bgm_to_play
+        st.session_state.current_bgm = bgm_to_play
 
     # 3. 현재 씬에 맞는 함수 호출
     current_scene = st.session_state.scene
@@ -97,3 +97,6 @@ def main():
         if st.button("처음으로 돌아가기"):
             st.session_state.clear()
             st.rerun()
+
+if __name__ == "__main__":
+    main()
