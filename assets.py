@@ -17,7 +17,7 @@ IMAGES = {
     "ryder_crouch": os.path.join(IMAGE_DIR, "ryder_crouch.png"),
     "street": os.path.join(IMAGE_DIR, "거리배경.jpg"),
 
-    "brexton_store": os.path.join(IMAGE_DIR, "브렉스톤가게배경.jpg"),
+    "brexton_store": os.path.join(IMAGE_DIR, "brexton_store.jpg"),
     "windigate_farm": os.path.join(IMAGE_DIR, "윈디케이트가게.jpg"),
 }
 
