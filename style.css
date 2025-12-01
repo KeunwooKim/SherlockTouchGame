@@ -1,8 +1,9 @@
 /* General App Styles */
 .stApp {
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-position: center center;
 }
 
 section[data-testid="stSidebar"], section[data-testid="stHeader"] {
@@ -164,3 +165,49 @@ div[data-testid="stHorizontalBlock"] {
 }
 */
 
+/* --- Custom Button Styles --- */
+
+/* For "Next" buttons, making them look like text and fixing to bottom right */
+.next-button {
+    position: fixed;
+    bottom: 20px;
+    right: 40px;
+    z-index: 20; /* Make sure it's on top */
+}
+
+.next-button .stButton button {
+    background-color: transparent !important;
+    border: none !important;
+    color: #a0a0a0 !important; 
+    padding: 5px !important;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.next-button .stButton button:hover {
+    color: white !important;
+    text-decoration: underline;
+}
+
+.next-button .stButton button:focus {
+    box-shadow: none !important;
+    color: white !important;
+}
+
+/* General transparency for all Streamlit buttons not explicitly styled */
+div.stButton > button {
+    background-color: transparent !important;
+    border: none !important;
+    color: white !important; /* Make text visible against dark backgrounds */
+    box-shadow: none !important; /* Remove any shadows */
+}
+
+div.stButton > button:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important; /* Slight hover effect */
+}
+
+div.stButton > button:focus {
+    box-shadow: none !important;
+}

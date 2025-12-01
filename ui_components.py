@@ -72,14 +72,8 @@ def play_sound(sound_file):
     """오디오 파일을 한 번 재생합니다. BGM과 충돌하지 않도록 JS를 사용합니다."""
     sound_base64 = get_base64_of_bin_file(sound_file)
     if sound_base64:
-        js_code = f"""
-            <script>
-                var audio = document.getElementById("sfx_player");
-                audio.src = "data:audio/mp3;base64,{sound_base64}";
-                audio.play();
-            </script>
-        """
-        st.markdown(js_code, unsafe_allow_html=True)
+        st.toast(f"🎵 효과음: {sound_file.split('/')[-1]}")
+        st.markdown(f'<script>playAudio("sfx_player", "{sound_base64}");</script>', unsafe_allow_html=True)
 
 
 def show_center_message(message, duration=3):
@@ -101,4 +95,9 @@ def show_center_message(message, duration=3):
         </script>
     """
     st.markdown(message_html, unsafe_allow_html=True)
+
+
+def update_state(**kwargs):
+    """세션 상태를 업데이트하기 위한 콜백 함수."""
+    st.session_state.update(kwargs)
 
